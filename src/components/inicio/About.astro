@@ -1,0 +1,44 @@
+---
+// src/components/inicio/About.astro
+// Sección "Sobre Nosotros" adaptada a datos reales
+// Reemplaza /about.jpg por una foto del gimnasio real
+---
+
+<section id="about" class="relative py-20 border-t border-border/60 bg-bg">
+  <div class="container grid md:grid-cols-2 gap-12 items-center">
+    <!-- Texto -->
+    <div class="max-w-xl">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-fg">
+        Sobre <span class="text-red-500">Nosotros</span>
+      </h2>
+      <p class="mt-6 text-base md:text-lg leading-relaxed text-muted">
+        En <strong>Shotokan Valladolid</strong> llevamos años formando a
+        practicantes de artes marciales en un entorno de respeto,
+        disciplina y superación personal.  
+      </p>
+      <p class="mt-4 text-base md:text-lg leading-relaxed text-muted">
+        Nuestro objetivo es que tanto <span class="text-fg">niños como adultos</span> 
+        encuentren en el dojo un espacio donde mejorar su condición física, 
+        aprender defensa personal y crecer en valores que van más allá del tatami.
+      </p>
+
+      <a
+        href="/classes"
+        class="mt-8 inline-flex items-center justify-center rounded-lg bg-red-500 px-6 py-3 text-sm font-semibold text-white hover:bg-red-600 transition"
+      >
+        Ver Actividades
+      </a>
+    </div>
+
+    <!-- Imagen -->
+    <div class="relative">
+      <img
+        src="/about.jpg"
+        alt="Entrenamiento en Shotokan Valladolid"
+        class="w-full rounded-2xl border border-border/60 object-cover shadow-lg"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </div>
+</section>

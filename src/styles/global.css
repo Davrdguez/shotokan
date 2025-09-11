@@ -1,0 +1,46 @@
+/* src/styles/global.css */
+@import "tailwindcss";
+
+/* ===== Colores base del diseño (escala de grises dark) ===== */
+:root {
+  --color-bg:       #02002B; /* fondo principal */
+  --color-surface:  #1A1A1A; /* superficies / cards */
+  --color-fg:       #FFFFFF; /* texto principal / botones blancos */
+  --color-muted:    #CCCCCC; /* texto secundario */
+  --color-border:   #333333; /* bordes / divisores */
+  --color-elevated: #000000; /* negro profundo (footer) */
+  --color-map:      #F5F5F5; /* gris claro (mapa/embeds) */
+}
+
+/* Mapear tokens a Tailwind (v4) */
+@theme {
+  --color-bg:       var(--color-bg);
+  --color-surface:  var(--color-surface);
+  --color-fg:       var(--color-fg);
+  --color-muted:    var(--color-muted);
+  --color-border:   var(--color-border);
+  --color-elevated: var(--color-elevated);
+  --color-map:      var(--color-map);
+}
+
+/* Base mínima */
+html, body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+}
+
+::selection {
+  background: var(--color-fg);
+  color: var(--color-bg);
+}
+
+/* Accesibilidad de foco */
+:focus-visible {
+  outline: 2px solid var(--color-fg);
+  outline-offset: 2px;
+}
+
+/* Contenedor utilitario (opcional) */
+.container {
+  @apply mx-auto max-w-7xl px-4;
+}

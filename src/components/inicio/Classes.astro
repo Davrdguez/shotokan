@@ -1,0 +1,157 @@
+---
+// src/components/inicio/Classes.astro
+// Dividido en Infantiles y Adultos con badges de horarios
+const infantiles = [
+  {
+    title: "Karate Infantil",
+    schedule: ["Lunes y miércoles", "18:30 - 19:30"],
+    img: "/classes/karate-infantil.jpg",
+  },
+  {
+    title: "Kick Boxing Infantil",
+    schedule: ["Lunes, miércoles y viernes", "17:30 - 18:30"],
+    img: "/classes/kickboxing-infantil.jpg",
+  },
+  {
+    title: "Boxeo Infantil",
+    schedule: ["Lunes y miércoles", "20:00 - 21:00"],
+    img: "/classes/boxeo-infantil.jpg",
+  },
+  {
+    title: "Judo Infantil",
+    schedule: ["Lunes y miércoles", "17:30 - 18:30"],
+    img: "/classes/judo-infantil.jpg",
+  },
+  {
+    title: "Taekwondo Infantil",
+    schedule: ["Lunes y viernes", "18:30 - 19:30"],
+    img: "/classes/taekwondo-infantil.jpg",
+  },
+];
+
+const adultos = [
+  {
+    title: "Karate Adultos",
+    schedule: ["Lunes, miércoles y viernes", "Mañana 10:30-11:30", "Tarde 17:30-18:30 / 20:30-21:30"],
+    img: "/classes/karate-adultos.jpg",
+  },
+  {
+    title: "Kick Boxing Muay Thai Adultos",
+    schedule: ["Martes y jueves", "20:30 - 22:00"],
+    img: "/classes/kickboxing-adultos.jpg",
+  },
+  {
+    title: "Yoga · Pilates · Eutonía",
+    schedule: ["Martes y jueves", "17:30 - 18:30"],
+    img: "/classes/yoga.jpg",
+  },
+  {
+    title: "Aikido Adultos",
+    schedule: ["Martes y viernes", "21:00 - 22:00"],
+    img: "/classes/aikido.jpg",
+  },
+  {
+    title: "Kung Fu",
+    schedule: ["Martes y jueves", "20:30 - 22:00"],
+    img: "/classes/kungfu.jpg",
+  },
+  {
+    title: "Boxeo Adultos",
+    schedule: ["Lunes, miércoles y viernes", "20:00 - 21:30"],
+    img: "/classes/boxeo-adultos.jpg",
+  },
+  {
+    title: "Judo Adultos",
+    schedule: ["Lunes y miércoles", "20:00 - 21:00"],
+    img: "/classes/judo-adultos.jpg",
+  },
+  {
+    title: "Jiujitsu",
+    schedule: ["Lunes a jueves", "18:30 - 20:00"],
+    img: "/classes/jiujitsu.jpg",
+  },
+  {
+    title: "Taekwondo Adultos",
+    schedule: ["Lunes y viernes", "19:30 - 20:30"],
+    img: "/classes/taekwondo-adultos.jpg",
+  },
+  {
+    title: "Kendo",
+    schedule: ["Viernes", "18:30 - 19:30"],
+    img: "/classes/kendo.jpg",
+  },
+  {
+    title: "Defensa Personal",
+    schedule: ["Viernes", "17:30 - 18:30"],
+    img: "/classes/defensa.jpg",
+  },
+];
+---
+
+<section id="classes" class="py-20 border-t border-border/60 bg-bg">
+  <div class="container space-y-20">
+    <!-- Infantiles -->
+    <div>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-fg mb-12 text-center">
+        Actividades <span class="text-red-500">Infantiles</span>
+      </h2>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {infantiles.map((cls) => (
+          <div class="rounded-xl overflow-hidden bg-surface border border-border/60 hover:shadow-xl transition group">
+            <div class="overflow-hidden">
+              <img
+                src={cls.img}
+                alt={cls.title}
+                class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-red-500">{cls.title}</h3>
+              <div class="mt-3 flex flex-col gap-1">
+                {cls.schedule.map((s) => (
+                  <span class="inline-block text-xs px-2 py-1 rounded bg-border/30 text-fg/80 w-fit">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Adultos -->
+    <div>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-fg mb-12 text-center">
+        Actividades <span class="text-red-500">Adultos</span>
+      </h2>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {adultos.map((cls) => (
+          <div class="rounded-xl overflow-hidden bg-surface border border-border/60 hover:shadow-xl transition group">
+            <div class="overflow-hidden">
+              <img
+                src={cls.img}
+                alt={cls.title}
+                class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-red-500">{cls.title}</h3>
+              <div class="mt-3 flex flex-col gap-1">
+                {cls.schedule.map((s) => (
+                  <span class="inline-block text-xs px-2 py-1 rounded bg-border/30 text-fg/80 w-fit">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

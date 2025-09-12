@@ -3,7 +3,7 @@
 
 /* ===== Colores base del diseño (escala de grises dark) ===== */
 :root {
-  --color-bg:       #02002B; /* fondo principal */
+  --color-bg:       #060c21; /* fondo principal */
   --color-surface:  #1A1A1A; /* superficies / cards */
   --color-fg:       #FFFFFF; /* texto principal / botones blancos */
   --color-muted:    #CCCCCC; /* texto secundario */

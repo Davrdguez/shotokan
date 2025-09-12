@@ -1,8 +1,5 @@
 ---
 // src/components/common/Header.astro
-// Header responsive, sin React. Astro + Tailwind.
-// Menú lateral en móvil con animación de slide desde la izquierda.
-// Adaptado a Shotokan Valladolid (etiquetas en ES).
 const nav = [
   { href: "/", label: "Inicio" },
   { href: "/classes", label: "Actividades" },
@@ -15,8 +12,8 @@ const nav = [
 <header class="sticky top-0 z-50 bg-bg/80 backdrop-blur border-b border-border/40">
   <div class="container h-16 flex items-center justify-between">
     <!-- Logo -->
-    <a href="/" class="font-bold tracking-wide text-fg text-lg md:text-xl">
-      Shotokan Valladolid
+    <a href="/" class="flex items-center gap-2">
+      <img src="/logo.png" alt="Shotokan Valladolid" class="h-10 w-auto md:h-12" />
     </a>
 
     <!-- Desktop Nav -->
@@ -40,7 +37,6 @@ const nav = [
       aria-expanded="false"
       id="menu-toggle"
     >
-      <!-- Icon hamburger -->
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M4 6h16M4 12h16M4 18h16" />
@@ -59,13 +55,14 @@ const nav = [
     aria-hidden="true"
   >
     <div class="flex items-center justify-between h-16 px-4 border-b border-border/40">
-      <a href="/" class="font-bold text-fg">Shotokan Valladolid</a>
+      <a href="/" class="flex items-center">
+        <img src="/logo.png" alt="Shotokan Valladolid" class="h-8 w-auto" />
+      </a>
       <button
         id="menu-close"
         class="inline-flex items-center justify-center w-10 h-10 rounded-md border border-border text-fg"
         aria-label="Cerrar menú"
       >
-        <!-- Icon close -->
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M6 18L18 6M6 6l12 12" />
@@ -86,7 +83,6 @@ const nav = [
     </nav>
   </aside>
 
-  <!-- JS mínimo para abrir/cerrar -->
   <script is:inline>
     const toggle = document.getElementById('menu-toggle');
     const closeBtn = document.getElementById('menu-close');
@@ -124,3 +120,4 @@ const nav = [
     drawer.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
   </script>
 </header>
+w

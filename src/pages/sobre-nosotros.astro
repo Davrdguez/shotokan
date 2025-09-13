@@ -1,0 +1,250 @@
+---
+// src/pages/about.astro
+// Página "Sobre Nosotros" — Shotokan Valladolid (Luis Méndez)
+// Tech: Astro + TailwindCSS
+// Paleta: fondo #0A192F, texto #FFFFFF, acento rojo (Tailwind: red-600)
+// Rutas de imágenes: ajusta según tu /public
+import "../styles/global.css";
+import Layout from "../layouts/Layout.astro"; // <— IMPORTA TU LAYOUT
+
+
+const CONTACT = {
+  address: "Paseo de Zorrilla, 117, 47008 Valladolid",
+  phone: "+34 983 272 632",
+  email: "centrodeportivoshotokan@gmail.com",
+  instagram: "https://www.instagram.com/shotokanluismendez/",
+  website: "https://shotokanluismendez.com",
+};
+
+const activities = [
+  "Karate (línea Kiokai)",
+  "Karate Infantil",
+  "Kick Boxing / Muay Thai (adultos)",
+  "Kick Boxing Infantil",
+  "Kick Boxing Avanzado",
+  "Kung Fu (formas, armas y sanda)",
+  "Aikido",
+  "Yoga · Pilates · Eutonía",
+  // "Judo" // visible en redes; descomenta si quieres mostrarlo
+];
+
+const team = [
+  {
+    name: "Luis Miguel Méndez de Urueña",
+    role: "Director y Profesor de Karate (Shotokan)",
+    bio: "Trayectoria dilatada en la enseñanza del karate-do en Valladolid. Entrenador nacional, enfoque técnico y pedagógico.",
+    img: "/team/luis-mendez.jpg", // sustituir por imagen real
+    badges: ["Karate Kiokai", "Formación técnica", "Dojo management"],
+  },
+  // Puedes añadir más instructores aquí cuando tengas fotos/datos confirmados
+];
+
+const values = [
+  { title: "Disciplina", text: "Constancia y autocontrol dentro y fuera del tatami." },
+  { title: "Respeto", text: "Honrar a compañeros, senseis y a uno mismo en cada entrenamiento." },
+  { title: "Superación", text: "Crecimiento continuo, paso a paso, sin atajos." },
+  { title: "Comunidad", text: "Un dojo es una familia: apoyarnos para llegar más lejos." },
+];
+
+const facilities = [
+  { src: "/dojo/entrada.jpg", alt: "Entrada del Centro Deportivo Shotokan" },
+  { src: "/dojo/tatami-principal.jpg", alt: "Tatami principal" },
+  { src: "/dojo/sala-2.jpg", alt: "Sala secundaria" },
+  { src: "/dojo/material.jpg", alt: "Material y protecciones" },
+  { src: "/dojo/vestuario.jpg", alt: "Vestuarios" },
+  { src: "/dojo/sauna.jpg", alt: "Sauna (vestuario mujeres)" },
+];
+
+const faqs = [
+  { q: "¿Puedo empezar sin experiencia?", a: "Sí. Tenemos grupos por niveles. Te prestamos material básico los primeros días y te acompañamos paso a paso." },
+  { q: "¿Desde qué edad se puede entrenar?", a: "Desde 4 años (Karate/Kick Boxing infantil). Para adultos no hay límite: nunca es tarde para empezar." },
+  { q: "¿La competición es obligatoria?", a: "No. Es opcional. Puedes entrenar por salud, técnica, defensa personal o preparación para competir." },
+  { q: "¿Qué debo llevar a la primera clase?", a: "Ropa deportiva cómoda y agua. Si decides continuar, te asesoramos con el material." },
+];
+---
+<Layout>
+<main class="bg-[#0A192F] text-white min-h-screen">
+  <!-- Hero corto / breadcrumb -->
+  <section class="relative overflow-hidden border-b border-white/10">
+    <div class="container mx-auto px-4 py-16 md:py-24">
+      <p class="text-sm tracking-wider uppercase text-white/70">Shotokan Valladolid</p>
+      <h1 class="mt-2 text-3xl md:text-5xl font-bold">Sobre Nosotros</h1>
+      <p class="mt-4 max-w-2xl text-white/80">Centro Deportivo Shotokan en Valladolid. Artes marciales para todas las edades: técnica, valores y superación.</p>
+      <nav class="mt-6 text-sm text-white/60" aria-label="breadcrumbs">
+        <ol class="flex items-center gap-2">
+          <li><a class="hover:text-white/90" href="/">Inicio</a></li>
+          <li class="opacity-50">/</li>
+          <li aria-current="page" class="text-white">Sobre nosotros</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full bg-red-600/20 blur-3xl"></div>
+  </section>
+
+  <!-- Intro / Misión -->
+  <section class="container mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-start">
+    <div>
+      <h2 class="text-2xl md:text-3xl font-semibold">Quiénes somos</h2>
+      <p class="mt-4 text-white/80">Somos el <strong>Centro Deportivo Shotokan</strong>, en <strong>{CONTACT.address}</strong>. Desde nuestro tatami formamos a niños, jóvenes y adultos en <strong>karate-do</strong> y otras artes marciales, con una enseñanza cercana y progresiva.</p>
+      <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-red-600"></span><span>Metodología técnica con base <strong>Kiokai</strong> en Karate (kihon, kata y kumite).</span></li>
+        <li class="flex items-start gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-red-600"></span><span>Instalaciones con <strong>cuatro salas</strong>, tatami y material específico.</span></li>
+        <li class="flex items-start gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-red-600"></span><span>Entrenamiento seguro y adaptable por edades y niveles.</span></li>
+      </ul>
+      <div class="mt-6 text-sm text-white/80">
+        <p><strong>Tel.:</strong> {CONTACT.phone}</p>
+        <p><strong>Email:</strong> <a class="underline decoration-white/30 hover:decoration-white" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></p>
+        <p><strong>Instagram:</strong> <a class="underline decoration-white/30 hover:decoration-white" href={CONTACT.instagram} target="_blank" rel="noopener">@shotokanluismendez</a></p>
+      </div>
+    </div>
+    <div class="relative">
+      <div class="aspect-video w-full overflow-hidden rounded-2xl border border-white/10">
+        <img src="/dojo/hero-about.jpg" alt="Tatami del dojo" class="h-full w-full object-cover" loading="lazy" />
+      </div>
+      <div class="absolute -bottom-6 -right-6 hidden md:block rounded-xl bg-red-600 px-4 py-3 text-sm font-medium">En {new Date().getFullYear()} seguimos creciendo</div>
+    </div>
+  </section>
+
+  <!-- Actividades -->
+  <section class="border-t border-white/10">
+    <div class="container mx-auto px-4 py-16 md:py-24">
+      <div class="md:flex md:items-end md:justify-between">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold">Actividades</h2>
+          <p class="mt-2 text-white/80">Artes marciales y bienestar para todos los niveles.</p>
+        </div>
+        <a href="/classes" class="mt-6 md:mt-0 inline-flex items-center gap-2 rounded-lg border border-white/10 px-4 py-2 text-sm hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-red-600/50">Ver clases</a>
+      </div>
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {activities.map((a) => (
+          <div class="rounded-xl border border-white/10 bg-white/5 p-4">{a}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Valores -->
+  <section class="border-t border-white/10">
+    <div class="container mx-auto px-4 py-16 md:py-24">
+      <div class="md:flex md:items-end md:justify-between">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold">Valores del dojo</h2>
+          <p class="mt-2 text-white/80">Técnica + actitud: nuestro camino del karate-do.</p>
+        </div>
+      </div>
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {values.map(v => (
+          <div class="rounded-2xl border border-white/10 p-6 bg-white/5">
+            <h3 class="text-lg font-semibold">{v.title}</h3>
+            <p class="mt-2 text-white/80">{v.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Metodología -->
+  <section class="border-t border-white/10">
+    <div class="container mx-auto px-4 py-16 md:py-24 grid lg:grid-cols-3 gap-10 items-start">
+      <div class="lg:col-span-1">
+        <h2 class="text-2xl md:text-3xl font-semibold">Metodología</h2>
+        <p class="mt-4 text-white/80">Estructuramos el aprendizaje por ciclos con objetivos claros, integrando <strong>kihon</strong> (fundamentos), <strong>kata</strong> (forma) y <strong>kumite</strong> (aplicación), junto a preparación física y educación en valores.</p>
+      </div>
+      <div class="lg:col-span-2 grid sm:grid-cols-2 gap-6">
+        <div class="rounded-2xl border border-white/10 p-6"><h3 class="font-semibold">1) Fundamentos</h3><p class="mt-2 text-white/80">Posturas, respiración, desplazamientos y golpes básicos.</p></div>
+        <div class="rounded-2xl border border-white/10 p-6"><h3 class="font-semibold">2) Técnica + Forma</h3><p class="mt-2 text-white/80">Kata como pilar técnico. Correcciones individualizadas.</p></div>
+        <div class="rounded-2xl border border-white/10 p-6"><h3 class="font-semibold">3) Aplicación</h3><p class="mt-2 text-white/80">Kumite progresivo (controlado/reglado). Lectura táctica.</p></div>
+        <div class="rounded-2xl border border-white/10 p-6"><h3 class="font-semibold">4) Preparación física</h3><p class="mt-2 text-white/80">Movilidad, fuerza básica y prevención de lesiones.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instructores -->
+  <section class="border-t border-white/10">
+    <div class="container mx-auto px-4 py-16 md:py-24">
+      <div class="md:flex md:items-end md:justify-between">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold">Dirección e instructores</h2>
+          <p class="mt-2 text-white/80">Equipo titulado y federado. Trato cercano y seguimiento real.</p>
+        </div>
+        <a href="/contact" class="mt-6 md:mt-0 inline-flex items-center gap-2 rounded-lg border border-white/10 px-4 py-2 text-sm hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-red-600/50">Contactar</a>
+      </div>
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {team.map((p) => (
+          <article class="rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+            <div class="aspect-[4/3] w-full overflow-hidden">
+              <img src={p.img} alt={p.name} class="h-full w-full object-cover" loading="lazy" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold">{p.name}</h3>
+              <p class="text-sm text-white/80">{p.role}</p>
+              <p class="mt-3 text-white/80">{p.bio}</p>
+              <ul class="mt-4 flex flex-wrap gap-2">
+                {p.badges.map(b => (<li class="rounded-full border border-white/10 bg-[#0A192F] px-3 py-1 text-xs">{b}</li>))}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Instalaciones / Galería -->
+  <section class="border-t border-white/10">
+    <div class="container mx-auto px-4 py-16 md:py-24">
+      <div class="md:flex md:items-end md:justify-between">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold">Instalaciones</h2>
+          <p class="mt-2 text-white/80">Cuatro salas, tatami y material específico. Vestuarios y sauna.</p>
+        </div>
+        <a href="/contact" class="mt-6 md:mt-0 inline-flex items-center gap-2 rounded-lg border border-white/10 px-4 py-2 text-sm hover:bg-white/5">Visitar el dojo</a>
+      </div>
+      <div class="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4">
+        {facilities.map((f) => (
+          <a href={f.src} class="group relative block overflow-hidden rounded-xl border border-white/10" target="_blank" rel="noopener">
+            <img src={f.src} alt={f.alt} class="h-40 md:h-56 w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0A192F]/60 via-transparent"></div>
+            <span class="absolute bottom-2 left-2 text-xs bg-[#0A192F]/70 backdrop-blur px-2 py-1 rounded">{f.alt}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="border-t border-white/10">
+    <div class="container mx-auto px-4 py-16 md:py-24">
+      <h2 class="text-2xl md:text-3xl font-semibold">Preguntas frecuentes</h2>
+      <div class="mt-6 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5">
+        {faqs.map(item => (
+          <details class="group open:bg-white/5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-4 hover:bg-white/5">
+              <span class="font-medium">{item.q}</span>
+              <svg class="h-5 w-5 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <div class="px-6 pb-6 text-white/80">{item.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="border-t border-white/10 relative overflow-hidden">
+    <div class="container mx-auto px-4 py-16 md:py-24 text-center">
+      <h2 class="text-2xl md:text-3xl font-semibold">¿Te vienes a probar una clase?</h2>
+      <p class="mt-3 text-white/80">Primera clase de prueba gratuita. Trae ropa cómoda y ganas de aprender.</p>
+      <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="/contact" class="inline-flex items-center justify-center rounded-xl bg-red-600 px-5 py-3 font-medium text-white shadow hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">Reservar prueba</a>
+        <a href="/schedule" class="inline-flex items-center justify-center rounded-xl border border-white/10 px-5 py-3 font-medium hover:bg-white/5">Ver horarios</a>
+      </div>
+      <div class="mt-6 text-sm text-white/70">
+        <p>{CONTACT.address}</p>
+        <p>{CONTACT.phone}</p>
+        <p><a class="underline decoration-white/30 hover:decoration-white" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></p>
+      </div>
+    </div>
+    <div class="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-red-600/20 blur-3xl"></div>
+  </section>
+</main>
+</Layout>

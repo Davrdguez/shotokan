@@ -1,0 +1,110 @@
+---
+/* src/pages/classes.astro
+   Página "Nuestras actividades" — Shotokan Valladolid
+   Astro + Tailwind • fondo #0A192F, texto blanco, acento rojo
+*/
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+
+const title = "Nuestras Actividades · Shotokan Valladolid";
+const description =
+  "Artes marciales y actividades del Centro Deportivo Shotokan en Valladolid: Karate, MMA y BJJ, Iaido, Aikido, Taekwondo, Kung Fu, Kick-Boxing y más.";
+
+const activities = [
+  {
+    name: "Karate (línea Kiokai)",
+    href: "/mas-informacion/karate",
+    img: "/activities/karate.jpg",
+    text: "Disciplina base del dojo. Kihon, kata y kumite desde iniciación hasta cinturones avanzados.",
+  },
+  {
+    name: "MMA y BJJ",
+    href: "/mas-informacion/mma-bjj",
+    img: "/activities/mma.jpg",
+    text: "Artes marciales mixtas y Brazilian Jiu-Jitsu. Trabajo de suelo, sumisiones y grappling técnico.",
+  },
+  {
+    name: "Iaido",
+    href: "/mas-informacion/iaido",
+    img: "/activities/iaido.jpg",
+    text: "El arte japonés de desenvainar y cortar con katana. Concentración, precisión y control.",
+  },
+  {
+    name: "Aikido",
+    href: "/mas-informacion/aikido",
+    img: "/activities/aikido.jpg",
+    text: "Arte marcial japonés basado en la armonía, fluidez y control de la energía del oponente.",
+  },
+  {
+    name: "Taekwondo",
+    href: "/mas-informacion/taekwondo",
+    img: "/activities/taekwondo.jpg",
+    text: "Patadas espectaculares, disciplina coreana y preparación física completa.",
+  },
+  {
+    name: "Kung Fu",
+    href: "/mas-informacion/kung-fu",
+    img: "/activities/kungfu.jpg",
+    text: "Formas tradicionales, armas y sanda (combate). Equilibrio entre técnica y expresión corporal.",
+  },
+  {
+    name: "Kick-Boxing",
+    href: "/mas-informacion/kick-boxing",
+    img: "/activities/kickboxing.jpg",
+    text: "Trabajo de puños y piernas, combinaciones y sparring progresivo. Salud, técnica y competición opcional.",
+  },
+  {
+    name: "Yoga · Pilates · Eutonía",
+    href: "/contacto",
+    img: "/activities/yoga.jpg",
+    text: "Actividades de bienestar complementarias: flexibilidad, fuerza postural y control corporal.",
+  },
+];
+---
+
+<Layout title={title} description={description}>
+  <main class="bg-[#0A192F] text-white min-h-screen">
+    <!-- HERO -->
+    <section class="relative overflow-hidden border-b border-white/10">
+      <div class="container mx-auto px-4 py-16 md:py-24">
+        <p class="text-sm tracking-wider uppercase text-white/70">Shotokan Valladolid</p>
+        <h1 class="mt-2 text-3xl md:text-5xl font-bold">Nuestras Actividades</h1>
+        <p class="mt-4 max-w-2xl text-white/80">
+          En el Centro Deportivo Shotokan ofrecemos una amplia variedad de disciplinas de artes marciales y actividades de bienestar para todas las edades y niveles.
+        </p>
+      </div>
+      <div class="pointer-events-none absolute -top-10 -right-10 h-44 w-44 rounded-full bg-red-600/20 blur-3xl"></div>
+    </section>
+
+    <!-- GRID ACTIVIDADES -->
+    <section class="container mx-auto px-4 py-16 md:py-24">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {activities.map((a) => (
+          <a href={a.href} class="group rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition">
+            <div class="aspect-[4/3] w-full overflow-hidden">
+              <img src={a.img} alt={a.name} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy"/>
+            </div>
+            <div class="p-6">
+              <h2 class="text-lg font-semibold">{a.name}</h2>
+              <p class="mt-2 text-sm text-white/80">{a.text}</p>
+              <span class="mt-3 inline-block text-sm font-medium text-red-600">Ver más →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="border-t border-white/10 relative overflow-hidden">
+      <div class="container mx-auto px-4 py-16 md:py-24 text-center">
+        <h2 class="text-2xl md:text-3xl font-semibold">¿Quieres probar una actividad?</h2>
+        <p class="mt-3 text-white/80">Primera clase gratuita en cualquier disciplina. Solo trae ropa cómoda.</p>
+        <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="/contacto" class="inline-flex items-center justify-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">Reservar prueba</a>
+          <a href="/schedule" class="inline-flex items-center justify-center rounded-xl border border-white/10 px-5 py-3 font-medium hover:bg-white/5">Ver horarios</a>
+        </div>
+      </div>
+      <div class="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-red-600/20 blur-3xl"></div>
+    </section>
+  </main>
+</Layout>

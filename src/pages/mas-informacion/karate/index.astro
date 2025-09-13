@@ -1,0 +1,261 @@
+---
+/* src/pages/karate.astro
+   Página "Karate" — Shotokan Valladolid
+   Astro + Tailwind • fondo #0A192F, texto blanco, acento rojo (red-600)
+*/
+
+import Layout from "../../../layouts/Layout.astro";
+import "../../../styles/global.css";
+
+// Rutas de imágenes: ajusta a tu /public
+const HERO_IMG = "/karate/hero.jpg";
+
+const CONTACT = {
+  address: "Paseo de Zorrilla, 117, 47008 Valladolid",
+  phone: "+34 983 272 632",
+  email: "centrodeportivoshotokan@gmail.com",
+};
+
+const benefits = [
+  { title: "Condición física", text: "Mejora fuerza básica, coordinación, movilidad y resistencia." },
+  { title: "Confianza y disciplina", text: "Desarrollo de autocontrol, respeto y hábitos saludables." },
+  { title: "Técnica y concentración", text: "Trabajo técnico preciso: kihon, kata y kumite." },
+  { title: "Bienestar y defensa", text: "Aplicaciones prácticas y mejora del bienestar general." },
+];
+
+const methodology = [
+  { title: "Kihon (Fundamentos)", text: "Posturas, desplazamientos, bloqueos, puños y patadas con corrección técnica." },
+  { title: "Kata (Forma)", text: "Secuencias técnicas tradicionales para interiorizar mecánicas y ritmo." },
+  { title: "Kumite (Aplicación)", text: "Trabajo por parejas con control y progresión, del no-contacto al reglado." },
+  { title: "Preparación física", text: "Movilidad, core y prevención de lesiones adaptada a la edad." },
+];
+
+const levels = [
+  {
+    name: "Infantil (4–7 años)",
+    text: "Psicomotricidad, juego y valores. Aprendizaje por dinámicas y hábitos básicos del dojo.",
+    img: "/karate/kids.jpg",
+  },
+  {
+    name: "Iniciación / Adultos",
+    text: "Bases técnicas desde cero, acondicionamiento progresivo y enfoque a bienestar y defensa.",
+    img: "/karate/adult-beginner.jpg",
+  },
+  {
+    name: "Avanzado",
+    text: "Perfeccionamiento de kata y kumite, timing, distancia y lectura táctica.",
+    img: "/karate/advanced.jpg",
+  },
+  {
+    name: "Competición (opcional)",
+    text: "Preparación específica para kata y kumite reglado: estrategia, arbitraje y reglamento.",
+    img: "/karate/competition.jpg",
+  },
+];
+
+const belts = [
+  { belt: "Blanco", note: "Inicio del camino" },
+  { belt: "Amarillo", note: "Fundamentos" },
+  { belt: "Naranja", note: "Coordinación" },
+  { belt: "Verde", note: "Combinaciones" },
+  { belt: "Azul", note: "Ritmo y control" },
+  { belt: "Marrón", note: "Profundización técnica" },
+  { belt: "Negro", note: "Grado Dan (exámenes federativos)" },
+];
+
+const faqs = [
+  { q: "¿Puedo empezar sin experiencia previa?", a: "Sí. Tenemos grupos por niveles y te guiamos desde cero. La primera clase de prueba es gratuita." },
+  { q: "¿Hay contacto en las clases?", a: "El trabajo de kumite es progresivo y controlado. La seguridad es prioritaria y la competición es opcional." },
+  { q: "¿Qué necesito para empezar?", a: "Ropa deportiva cómoda y agua. Te asesoramos sobre el karate-gi y protecciones cuando decidas continuar." },
+  { q: "¿Edad recomendada?", a: "Desde 4 años (grupo infantil). En adultos no hay límite: adaptamos intensidad y objetivos." },
+];
+
+const title = "Karate · Shotokan Valladolid";
+const description = "Karate tradicional en Valladolid: kihon, kata y kumite para todas las edades. Entrena técnica, disciplina y bienestar en Shotokan Valladolid.";
+---
+
+<Layout title={title} description={description}>
+  <main class="bg-[#0A192F] text-white min-h-screen">
+    <!-- HERO -->
+    <section class="relative overflow-hidden border-b border-white/10">
+      <div class="container mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <p class="text-sm tracking-wider uppercase text-white/70">Más información</p>
+          <h1 class="mt-2 text-3xl md:text-5xl font-bold">Karate</h1>
+          <p class="mt-4 max-w-2xl text-white/80">
+            Línea tradicional con método progresivo: <strong>kihon</strong>, <strong>kata</strong> y <strong>kumite</strong>.
+            Entrenamiento seguro y adaptado por edades y niveles.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="/contact" class="inline-flex items-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">
+              Probar una clase
+            </a>
+            <a href="/schedule" class="inline-flex items-center rounded-xl border border-white/10 px-5 py-3 font-medium hover:bg-white/5">
+              Ver horarios
+            </a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-video w-full overflow-hidden rounded-2xl border border-white/10">
+            <img src={HERO_IMG} alt="Karate en Shotokan Valladolid" class="h-full w-full object-cover" loading="lazy" />
+          </div>
+          <div class="pointer-events-none absolute -top-10 -right-10 h-44 w-44 rounded-full bg-red-600/20 blur-3xl"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ¿QUÉ ES KARATE? + BENEFICIOS -->
+    <section class="container mx-auto px-4 py-16 md:py-24 grid lg:grid-cols-3 gap-10">
+      <div class="lg:col-span-1">
+        <h2 class="text-2xl md:text-3xl font-semibold">¿Qué es el karate?</h2>
+        <p class="mt-4 text-white/80">
+          Arte marcial japonés que integra trabajo técnico, forma y aplicación.
+          Su práctica fomenta la mejora física y mental, valores de respeto y superación, y un
+          enfoque de defensa personal con control.
+        </p>
+      </div>
+      <div class="lg:col-span-2 grid sm:grid-cols-2 gap-6">
+        {benefits.map((b) => (
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h3 class="text-lg font-semibold">{b.title}</h3>
+            <p class="mt-2 text-white/80">{b.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- METODOLOGÍA (KIOKAI) -->
+    <section class="border-t border-white/10">
+      <div class="container mx-auto px-4 py-16 md:py-24">
+        <div class="md:flex md:items-end md:justify-between">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-semibold">Metodología</h2>
+            <p class="mt-2 text-white/80">Progresión clara por niveles. Técnica con corrección individual y seguridad.</p>
+          </div>
+          <a href="/sobre-nosotros" class="mt-6 md:mt-0 inline-flex items-center gap-2 rounded-lg border border-white/10 px-4 py-2 text-sm hover:bg-white/5">
+            Conoce el dojo
+          </a>
+        </div>
+        <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {methodology.map((m) => (
+            <div class="rounded-2xl border border-white/10 p-6 bg-white/5">
+              <h3 class="font-semibold">{m.title}</h3>
+              <p class="mt-2 text-white/80">{m.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- NIVELES Y GRUPOS -->
+    <section class="border-t border-white/10">
+      <div class="container mx-auto px-4 py-16 md:py-24">
+        <h2 class="text-2xl md:text-3xl font-semibold">Grupos y niveles</h2>
+        <div class="mt-8 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+          {levels.map((lv) => (
+            <article class="rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+              <div class="aspect-[4/3] w-full overflow-hidden">
+                <img src={lv.img} alt={lv.name} class="h-full w-full object-cover" loading="lazy" />
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold">{lv.name}</h3>
+                <p class="mt-2 text-white/80">{lv.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CINTURONES (REFERENCIA) -->
+    <section class="border-t border-white/10">
+      <div class="container mx-auto px-4 py-16 md:py-24">
+        <h2 class="text-2xl md:text-3xl font-semibold">Cinturones (referencia)</h2>
+        <p class="mt-2 text-white/70 text-sm">La planificación y exámenes se comunican en el dojo; esta lista es orientativa.</p>
+        <ul class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {belts.map((b) => (
+            <li class="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+              <p class="font-medium">{b.belt}</p>
+              <p class="text-white/70 text-sm">{b.note}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- EQUIPAMIENTO / CONSEJOS -->
+    <section class="border-t border-white/10">
+      <div class="container mx-auto px-4 py-16 md:py-24 grid lg:grid-cols-[1.2fr_1fr] gap-10">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold">Equipamiento y consejos</h2>
+          <ul class="mt-4 space-y-3 text-white/80">
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-red-600"></span><span>Ropa cómoda para comenzar. Karate-gi recomendado si continúas.</span></li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-red-600"></span><span>Protecciones según grupo: guantillas, espinilleras y bucal (recomendado).</span></li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-red-600"></span><span>Hidratación y puntualidad. Respeto a las normas del dojo.</span></li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <h3 class="font-semibold">Primera clase</h3>
+          <p class="mt-2 text-white/80">Sin compromiso. Ven 10 minutos antes para explicarte la dinámica del grupo y adaptar el calentamiento.</p>
+          <a href="/contact" class="mt-4 inline-flex items-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">
+            Reservar prueba
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="border-t border-white/10">
+      <div class="container mx-auto px-4 py-16 md:py-24">
+        <h2 class="text-2xl md:text-3xl font-semibold">Preguntas frecuentes</h2>
+        <div class="mt-6 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5">
+          {faqs.map((f) => (
+            <details class="group open:bg-white/5">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-4 hover:bg-white/5">
+                <span class="font-medium">{f.q}</span>
+                <svg class="h-5 w-5 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none">
+                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </summary>
+              <div class="px-6 pb-6 text-white/80">{f.a}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="border-t border-white/10 relative overflow-hidden">
+      <div class="container mx-auto px-4 py-16 md:py-24 text-center">
+        <h2 class="text-2xl md:text-3xl font-semibold">¿Listo para empezar?</h2>
+        <p class="mt-3 text-white/80">Primera clase de prueba gratuita. Te esperamos en el dojo.</p>
+        <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="/contact" class="inline-flex items-center justify-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">Contactar</a>
+          <a href="/schedule" class="inline-flex items-center justify-center rounded-xl border border-white/10 px-5 py-3 font-medium hover:bg-white/5">Ver horarios</a>
+        </div>
+        <div class="mt-6 text-sm text-white/70">
+          <p>{CONTACT.address}</p>
+          <p>{CONTACT.phone}</p>
+          <p><a class="underline decoration-white/30 hover:decoration-white" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></p>
+        </div>
+      </div>
+      <div class="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-red-600/20 blur-3xl"></div>
+    </section>
+  </main>
+
+  <!-- JSON-LD opcional para SEO -->
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Karate - Shotokan Valladolid",
+      "provider": {
+        "@type": "SportsActivityLocation",
+        "name": "Centro Deportivo Shotokan",
+        "address": CONTACT.address,
+        "telephone": CONTACT.phone
+      },
+      "description": description
+    })}
+  </script>
+</Layout>

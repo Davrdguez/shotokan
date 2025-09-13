@@ -1,0 +1,107 @@
+---
+/* src/pages/contacto.astro
+   Página "Contacto" — Shotokan Valladolid
+   Astro + Tailwind • fondo #0A192F, texto blanco, acento rojo (red-600)
+*/
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+
+const CONTACT = {
+  name: "Centro Deportivo Shotokan",
+  address: "Paseo de Zorrilla, 117, 47008 Valladolid",
+  phone: "+34 983 272 632",
+  email: "centrodeportivoshotokan@gmail.com",
+  instagram: "https://www.instagram.com/shotokanluismendez/",
+};
+const title = "Contacto · Shotokan Valladolid";
+const description =
+  "Contacta con el Centro Deportivo Shotokan (Valladolid). Dirección, teléfono, email y formulario para reservar tu primera clase de prueba.";
+---
+
+<Layout title={title} description={description}>
+  <main class="bg-[#0A192F] text-white min-h-screen">
+    <!-- HERO -->
+    <section class="relative overflow-hidden border-b border-white/10">
+      <div class="container mx-auto px-4 py-16 md:py-24">
+        <p class="text-sm tracking-wider uppercase text-white/70">Información</p>
+        <h1 class="mt-2 text-3xl md:text-5xl font-bold">Contacto</h1>
+        <p class="mt-4 max-w-2xl text-white/80">
+          Escríbenos para reservar tu clase de prueba gratuita o resolver cualquier duda.
+        </p>
+      </div>
+      <div class="pointer-events-none absolute -top-10 -right-10 h-44 w-44 rounded-full bg-red-600/20 blur-3xl"></div>
+    </section>
+
+    <!-- CONTACTO + FORM -->
+    <section class="container mx-auto px-4 py-16 md:py-24 grid lg:grid-cols-2 gap-10 items-start">
+      <!-- Info -->
+      <div>
+        <h2 class="text-2xl md:text-3xl font-semibold">Datos de contacto</h2>
+        <ul class="mt-6 space-y-3 text-white/80">
+          <li><strong>Dirección:</strong> {CONTACT.address}</li>
+          <li><strong>Tel.:</strong> <a href="tel:+34983272632" class="underline decoration-white/30 hover:decoration-white">{CONTACT.phone}</a></li>
+          <li><strong>Email:</strong> <a href={`mailto:${CONTACT.email}`} class="underline decoration-white/30 hover:decoration-white">{CONTACT.email}</a></li>
+          <li><strong>Instagram:</strong> <a href={CONTACT.instagram} target="_blank" rel="noopener" class="underline decoration-white/30 hover:decoration-white">@shotokanluismendez</a></li>
+        </ul>
+        <div class="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
+          <h3 class="font-semibold">Primera clase de prueba</h3>
+          <p class="mt-2 text-white/80">Sin compromiso. Ven con ropa deportiva cómoda y ganas de entrenar.</p>
+          <a href="/schedule" class="mt-4 inline-flex items-center rounded-xl border border-white/10 px-5 py-3 font-medium hover:bg-white/5">Ver horarios</a>
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <div>
+        <h2 class="text-2xl md:text-3xl font-semibold">Escríbenos</h2>
+        <form name="contact" method="POST" data-netlify="true" class="mt-6 space-y-4">
+          <input type="hidden" name="form-name" value="contact" />
+          <div>
+            <label for="name" class="block text-sm font-medium mb-1">Nombre</label>
+            <input id="name" name="name" required class="w-full rounded-lg border border-white/10 bg-white/10 px-4 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-red-600"/>
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium mb-1">Email</label>
+            <input id="email" type="email" name="email" required class="w-full rounded-lg border border-white/10 bg-white/10 px-4 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-red-600"/>
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium mb-1">Mensaje</label>
+            <textarea id="message" name="message" rows="4" required class="w-full rounded-lg border border-white/10 bg-white/10 px-4 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-red-600"></textarea>
+          </div>
+          <button type="submit" class="inline-flex items-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">Enviar mensaje</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- MAPA -->
+    <section class="border-t border-white/10">
+      <div class="container mx-auto px-4 py-16 md:py-24">
+        <h2 class="text-2xl md:text-3xl font-semibold">Dónde estamos</h2>
+        <div class="mt-6 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6531.46317245917!2d-4.745159623789928!3d41.62848038100567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd476d241ca0173d%3A0xb38f542fc28e169e!2sShotokan%20Valladolid!5e1!3m2!1ses!2ses!4v1757801673980!5m2!1ses!2ses"
+            width="600"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="h-full w-full"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- JSON-LD LocalBusiness -->
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SportsActivityLocation",
+      "name": CONTACT.name,
+      "address": CONTACT.address,
+      "telephone": CONTACT.phone,
+      "email": CONTACT.email,
+      "sameAs": [CONTACT.instagram],
+    })}
+  </script>
+</Layout>

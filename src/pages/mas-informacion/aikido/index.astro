@@ -1,0 +1,225 @@
+---
+/* src/pages/mas-informacion/aikido.astro
+   Página "Aikido" — Shotokan Valladolid
+   Astro + Tailwind • fondo #0A192F, texto blanco, acento rojo (red-600)
+*/
+import Layout from "../../../layouts/Layout.astro";
+import "../../../styles/global.css";
+
+// Imágenes (ajusta rutas a tu /public)
+const HERO_IMG = "/aikido/hero.jpg";
+
+const CONTACT = {
+  address: "Paseo de Zorrilla, 117, 47008 Valladolid",
+  phone: "+34 983 272 632",
+  email: "centrodeportivoshotokan@gmail.com",
+};
+
+const intro =
+  "Arte marcial japonés fundado por Morihei Ueshiba (O-Sensei). Trabaja el uso eficiente de la energía del oponente mediante desplazamientos (tai sabaki), controles articulares y proyecciones, con énfasis en la seguridad, el respeto y el desarrollo personal.";
+
+const pillars = [
+  { title: "Tai sabaki", text: "Desplazamientos y entradas para armonizar y redirigir la energía del ataque." },
+  { title: "Kuzushi y desequilibrio", text: "Creación de ángulos y puntos de control para proyectar o inmovilizar." },
+  { title: "Ukemi (caídas)", text: "Aprende a caer y rodar con seguridad. Progresión de básico a avanzado." },
+  { title: "Kokyu y centro", text: "Respiración, postura y uso del centro (hara) para conectar cuerpo y técnica." },
+];
+
+const benefits = [
+  { title: "Seguridad y control", text: "Técnicas con compañero priorizando el cuidado y el aprendizaje mutuo." },
+  { title: "Movilidad y equilibrio", text: "Mejora de coordinación, propiocepción y estabilidad." },
+  { title: "Gestión del estrés", text: "Calma activa, foco y control emocional a través del movimiento." },
+  { title: "Valores del dojo", text: "Etiqueta, compañerismo y respeto por todos los niveles." },
+];
+
+const levels = [
+  { name: "Iniciación", text: "Posturas básicas, entradas, ukemi y controles fundamentales.", img: "/aikido/beginner.jpg" },
+  { name: "Intermedio", text: "Transiciones, combinaciones, trabajo de flujo y timing.", img: "/aikido/intermediate.jpg" },
+  { name: "Avanzado", text: "Profundización técnica, armas (jo/bokken) y trabajo de intención.", img: "/aikido/advanced.jpg" },
+];
+
+const equipment = [
+  "Ropa deportiva cómoda al empezar. Recomendado keikogi (gi) y cinturón al continuar.",
+  "Higiene y uñas cortas. Quita anillos/relojes antes de entrenar.",
+  "Respeta la señal de “tap” y las indicaciones del instructor.",
+];
+
+const faqs = [
+  { q: "¿Puedo empezar sin experiencia?", a: "Sí. Aprenderás ukemi desde el primer día y progresarás con seguridad." },
+  { q: "¿Es un arte marcial con contacto fuerte?", a: "El contacto existe pero se trabaja con control y cuidado del compañero." },
+  { q: "¿Qué edad es recomendable?", a: "Jóvenes y adultos pueden practicar. Adaptamos la intensidad y el ritmo." },
+  { q: "¿Necesito armas (jo/bokken)?", a: "No al inicio. Más adelante las incorporamos; el dojo te asesorará." },
+];
+
+const title = "Aikido · Shotokan Valladolid";
+const description =
+  "Aikido en Valladolid: tai sabaki, ukemi, controles y proyecciones con método progresivo. Entrena seguridad, equilibrio y calma en Shotokan Valladolid.";
+---
+
+<Layout title={title} description={description}>
+  <main class="bg-[#0A192F] text-white min-h-screen">
+    <!-- HERO -->
+    <section class="relative overflow-hidden border-b border-white/10">
+      <div class="container mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <p class="text-sm tracking-wider uppercase text-white/70">Más información</p>
+          <h1 class="mt-2 text-3xl md:text-5xl font-bold">Aikido</h1>
+          <p class="mt-4 max-w-2xl text-white/80">{intro}</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="/contact" class="inline-flex items-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">
+              Probar una clase
+            </a>
+            <a href="/schedule" class="inline-flex items-center rounded-xl border border-white/10 px-5 py-3 font-medium hover:bg-white/5">
+              Ver horarios
+            </a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-video w-full overflow-hidden rounded-2xl border border-white/10">
+            <img src={HERO_IMG} alt="Aikido en Shotokan Valladolid" class="h-full w-full object-cover" loading="lazy" />
+          </div>
+          <div class="pointer-events-none absolute -top-10 -right-10 h-44 w-44 rounded-full bg-red-600/20 blur-3xl"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILARES -->
+    <section class="container mx-auto px-4 py-16 md:py-24 grid lg:grid-cols-3 gap-10">
+      <div class="lg:col-span-1">
+        <h2 class="text-2xl md:text-3xl font-semibold">Pilares del entrenamiento</h2>
+        <p class="mt-4 text-white/80">
+          Método progresivo que prioriza la seguridad y la técnica: desplazamiento, control del centro y caídas.
+        </p>
+      </div>
+      <div class="lg:col-span-2 grid sm:grid-cols-2 gap-6">
+        {pillars.map((p) => (
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h3 class="text-lg font-semibold">{p.title}</h3>
+            <p class="mt-2 text-white/80">{p.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="border-t border-white/10">
+      <div class="container mx-auto px-4 py-16 md:py-24">
+        <div class="md:flex md:items-end md:justify-between">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-semibold">Beneficios</h2>
+            <p class="mt-2 text-white/80">Calma activa, eficacia técnica y cuidado postural.</p>
+          </div>
+          <a href="/sobre-nosotros" class="mt-6 md:mt-0 inline-flex items-center gap-2 rounded-lg border border-white/10 px-4 py-2 text-sm hover:bg-white/5">
+            Conoce el dojo
+          </a>
+        </div>
+        <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {benefits.map((b) => (
+            <div class="rounded-2xl border border-white/10 p-6 bg-white/5">
+              <h3 class="font-semibold">{b.title}</h3>
+              <p class="mt-2 text-white/80">{b.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- NIVELES -->
+    <section class="border-t border-white/10">
+      <div class="container mx-auto px-4 py-16 md:py-24">
+        <h2 class="text-2xl md:text-3xl font-semibold">Grupos y niveles</h2>
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+          {levels.map((lv) => (
+            <article class="rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+              <div class="aspect-[4/3] w-full overflow-hidden">
+                <img src={lv.img} alt={lv.name} class="h-full w-full object-cover" loading="lazy" />
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold">{lv.name}</h3>
+                <p class="mt-2 text-white/80">{lv.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPAMIENTO / SEGURIDAD -->
+    <section class="border-t border-white/10">
+      <div class="container mx-auto px-4 py-16 md:py-24 grid lg:grid-cols-[1.2fr_1fr] gap-10">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold">Equipamiento y seguridad</h2>
+          <ul class="mt-4 space-y-3 text-white/80">
+            {equipment.map((e) => (
+              <li class="flex gap-3">
+                <span class="mt-2 h-2 w-2 rounded-full bg-red-600"></span>
+                <span>{e}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <h3 class="font-semibold">Primera clase</h3>
+          <p class="mt-2 text-white/80">Sesión de introducción a desplazamientos, ukemi y etiqueta del tatami.</p>
+          <a href="/contact" class="mt-4 inline-flex items-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">
+            Reservar prueba
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="border-t border-white/10">
+      <div class="container mx-auto px-4 py-16 md:py-24">
+        <h2 class="text-2xl md:text-3xl font-semibold">Preguntas frecuentes</h2>
+        <div class="mt-6 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5">
+          {faqs.map((f) => (
+            <details class="group open:bg-white/5">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-4 hover:bg-white/5">
+                <span class="font-medium">{f.q}</span>
+                <svg class="h-5 w-5 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none">
+                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </summary>
+              <div class="px-6 pb-6 text-white/80">{f.a}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="border-t border-white/10 relative overflow-hidden">
+      <div class="container mx-auto px-4 py-16 md:py-24 text-center">
+        <h2 class="text-2xl md:text-3xl font-semibold">¿Listo para empezar?</h2>
+        <p class="mt-3 text-white/80">Primera clase de prueba gratuita. Te esperamos en el dojo.</p>
+        <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="/contact" class="inline-flex items-center justify-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">Contactar</a>
+          <a href="/schedule" class="inline-flex items-center justify-center rounded-xl border border-white/10 px-5 py-3 font-medium hover:bg-white/5">Ver horarios</a>
+        </div>
+        <div class="mt-6 text-sm text-white/70">
+          <p>{CONTACT.address}</p>
+          <p>{CONTACT.phone}</p>
+          <p><a class="underline decoration-white/30 hover:decoration-white" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></p>
+        </div>
+      </div>
+      <div class="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-red-600/20 blur-3xl"></div>
+    </section>
+  </main>
+
+  <!-- JSON-LD opcional -->
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Aikido - Shotokan Valladolid",
+      "provider": {
+        "@type": "SportsActivityLocation",
+        "name": "Centro Deportivo Shotokan",
+        "address": CONTACT.address,
+        "telephone": CONTACT.phone
+      },
+      "description": description
+    })}
+  </script>
+</Layout>

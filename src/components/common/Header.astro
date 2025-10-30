@@ -7,6 +7,14 @@ const nav = [
   { href: "/", label: "Inicio" },
   { href: "/classes", label: "Nuestras actividades" },
   {
+    label: "Shotokan",
+    children: [
+      { href: "/shotokan", label: "Sobre Shotokan" },
+      { href: "/shotokan/instalaciones", label: "Instalaciones" },
+      { href: "/shotokan/nuestro-sensei", label: "Nuestro Sensei" },
+    ],
+  },
+  {
     label: "Más información",
     children: [
       { href: "/mas-informacion/karate", label: "Karate" },
@@ -24,7 +32,7 @@ const nav = [
 ];
 
 const pathname = Astro.url.pathname;
-const isActive = (href) => pathname === href || (href !== "/" && pathname.startsWith(href + "/"));
+const isActive = (href: string) => pathname === href || (href !== "/" && pathname.startsWith(href + "/"));
 ---
 
 <header class="sticky top-0 z-50 bg-bg/80 backdrop-blur border-b border-border/40">

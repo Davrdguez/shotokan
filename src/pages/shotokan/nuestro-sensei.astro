@@ -1,0 +1,39 @@
+---
+import Layout from "../../layouts/Layout.astro";
+const title = "Nuestro Sensei - Shotokan Valladolid";
+const description = "Conoce a nuestro Sensei y su trayectoria";
+---
+
+<Layout title={title} description={description}>
+  <main class="bg-[#0A192F] text-white min-h-screen">
+    <!-- Hero -->
+    <section class="relative overflow-hidden border-b border-white/10">
+      <div class="container mx-auto px-4 py-16 md:py-24 text-center">
+        <p class="mb-3 text-white/80">Shotokan</p>
+        <h1 class="mt-1 text-3xl md:text-5xl font-bold">Nuestro Sensei</h1>
+        <p class="mt-4 text-white/70 text-sm md:text-base">
+          Tradición, disciplina y dedicación al servicio de cada alumno.
+        </p>
+      </div>
+    </section>
+
+    <!-- Bio -->
+    <section class="container mx-auto px-4 py-12 md:py-16 grid md:grid-cols-2 gap-10 items-start">
+      <div class="order-2 md:order-1 space-y-5">
+        <h2 class="text-2xl md:text-3xl font-semibold">Trayectoria</h2>
+        <p class="text-white/80">
+          Con décadas de experiencia, nuestro Sensei ha formado a generaciones de practicantes, promoviendo los principios del Karate-Do: respeto, esfuerzo y mejora continua. Su enseñanza combina la base técnica del estilo Shotokan con una pedagogía cercana y rigurosa.
+        </p>
+        <p class="text-white/80">
+          Participante y promotor de múltiples seminarios, campeonatos y exhibiciones, su labor ha contribuido a difundir la cultura marcial japonesa en Valladolid y Castilla y León.
+        </p>
+        <div class="pt-2">
+          <a href="/contacto" class="inline-flex items-center rounded bg-white text-[#0A192F] font-semibold px-5 py-2 hover:opacity-90 transition">Solicitar más información</a>
+        </div>
+      </div>
+      <div class="order-1 md:order-2 max-w-lg md:ml-auto">
+        <img src="https://media.v2.siweb.es/uploaded_thumb_big/03306675df6bb004f83953b4f8ef82f7/reverso060.jpg" alt="Retrato del Sensei" class="w-full h-auto rounded-lg shadow-lg object-cover" />
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,102 @@
+---
+import Layout from "../layouts/Layout.astro"
+const title = "Sobre Shotokan - Shotokan Valladolid";
+const description = "Acerca de nuestro gimnasio en Valladolid";
+---
+
+<Layout title ={title} description = {description}>
+    <main class="bg-[#0A192F] text-white min-h-screen">
+        <!-- Hero -->
+        <section class="relative overflow-hidden border-b border-white/10">
+            <div class="container mx-auto px-4 py-16 md:py-24 text-center">
+                <p class=" mb-4 text-white/80">Sobre Shotokan </p>
+                <h1 class="mt-2  text-3xl md:text-5xl font-bold">Centro Deportivo Shotokan</h1>
+                <p class= "mt-4  text-white/80">Síguenos en Instagram y entérate de todas las novedades!</p>
+            </div>
+        </section>
+
+        <section class="max-w-6xl mx-auto px-4 py-10">
+  <div class="grid gap-6 md:grid-cols-[1.2fr,0.8fr]">
+    <!-- Columna izquierda (imagen grande) -->
+    <div class="h-full">
+      <img
+        src="https://media.v2.siweb.es/uploaded_thumb_big/03306675df6bb004f83953b4f8ef82f7/gimnasio2_015.jpg"
+        alt="Inauguración dojo"
+        class="w-full h-full object-cover rounded-lg"
+      />
+    </div>
+
+    <!-- Columna derecha -->
+    <div class="grid gap-6">
+      <!-- Fila 1: dos imágenes -->
+      <div class="grid grid-cols-2 gap-6">
+        <div class="aspect-[4/3]">
+          <img
+            src="https://media.v2.siweb.es/uploaded_thumb_big/03306675df6bb004f83953b4f8ef82f7/photo1634756330.jpeg"
+            alt="Placa"
+            class="w-full h-full object-cover rounded-lg"
+          />
+        </div>
+        <div class="aspect-[4/3]">
+          <img
+            src="https://media.v2.siweb.es/uploaded_thumb_big/03306675df6bb004f83953b4f8ef82f7/reverso060.jpg"
+            alt="Maestro"
+            class="w-full h-full object-cover rounded-lg object-top"
+          />
+        </div>
+      </div>
+
+      <!-- Fila 2: dos imágenes -->
+      <div class="grid grid-cols-2 gap-6">
+        <div class="aspect-[4/3]">
+          <img
+            src="https://media.v2.siweb.es/uploaded_thumb_big/03306675df6bb004f83953b4f8ef82f7/copia_de_fotos_el_mundo1.jpg"
+            alt="Kumite"
+            class="w-full h-full object-cover rounded-lg"
+          />
+        </div>
+        <div class="aspect-[4/3]">
+          <img
+            src="https://media.v2.siweb.es/uploaded_thumb_big/03306675df6bb004f83953b4f8ef82f7/02112012_shotokan_31_1.jpg"
+            alt="Cuadros"
+            class="w-full h-full object-cover rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Sección testimonial/descripcion institucional -->
+    <section class="w-full bg-[#B12C2C] md:grid md:grid-cols-2 gap-8 items-stretch py-12 md:py-20 px-6 md:px-0">
+      <!-- Texto informativo -->
+      <div class="flex flex-col justify-center max-w-2xl mx-auto text-white space-y-6">
+        <h2 class="italic font-semibold text-lg md:text-xl mb-2 text-white/80">
+          Ven al centro deportivo dedicado a las artes marciales más grande de Castilla y León
+        </h2>
+        <p>
+          Actualmente comenzamos una nueva etapa en las magníficas y amplias instalaciones del Paseo de Zorrilla, 117, situadas frente a los Jardines de la Rubia. El Centro Deportivo Shotokan de Valladolid cuenta con multitud de actividades enfocadas a la práctica de las diferentes artes marciales, con cuatro salas perfectamente acondicionadas, que suman más de 500 m2, y con unos amplios y modernos vestuarios de 140 m2.
+        </p>
+        <p>
+          Nuestro objetivo principal es seguir manteniendo los fundamentos tradicionales y la más pura etiqueta de las artes marciales japonesas.
+        </p>
+        <p>
+          Este centro fue inaugurado por el Excmo. Sr. Embajador de Japón en España, Sr. Motohide Yoshikawa y el Excmo. Sr. Alcalde de Valladolid D. Javier León de la Riva. El 3 Octubre de 2007. Marcando un hito en la promoción y reconocimiento de la cultura marcial japonesa en Valladolid, acercándola a todos los ciudadanos, como uno de los mejores métodos para el acondicionamiento físico, mental y espiritual de la persona, sin olvidar la faceta de la autodisciplina, destinada tanto a niños como a personas adultas.
+        </p>
+        <p>
+          Desde esta página te invitamos a que nos conozcas y poderte informar y atender sobre el arte marcial que más te guste, visítanos, tenemos abierto el centro, los lunes, miércoles y viernes, de 11 a 13 horas, por las mañanas y por la tarde de 18,00 a 22 horas, de lunes a viernes, Gracias por tu tiempo. 
+        </p>
+        <a href="/contacto" class="inline-block rounded bg-white text-[#B12C2C] font-bold mt-4 px-6 py-2 transition hover:bg-[#ffd1d1] hover:text-[#840000] shadow">
+          CONTÁCTANOS
+        </a>
+      </div>
+      <!-- Imagen de las fotos en la pared -->
+      <div class="flex items-center justify-center py-6 md:py-0">
+        <img 
+          src="https://media.v2.siweb.es/uploaded_thumb_big/03306675df6bb004f83953b4f8ef82f7/02112012_shotokan_31_1.jpg"
+          alt="Cuadros Shotokan"
+          class="rounded-lg w-full max-w-lg shadow-2xl border-4 border-white/10 object-cover" />
+      </div>
+    </section>
+    </main>   
+</Layout>

@@ -1,18 +1,29 @@
 /* src/styles/global.css */
 @import "tailwindcss";
 
-/* ===== Colores base del diseño (escala de grises dark) ===== */
+/* ===== Light/Dark Tokens ===== */
 :root {
-  --color-bg:       #060c21; /* fondo principal */
-  --color-surface:  #1A1A1A; /* superficies / cards */
-  --color-fg:       #FFFFFF; /* texto principal / botones blancos */
-  --color-muted:    #CCCCCC; /* texto secundario */
-  --color-border:   #333333; /* bordes / divisores */
-  --color-elevated: #000000; /* negro profundo (footer) */
-  --color-map:      #F5F5F5; /* gris claro (mapa/embeds) */
+  --color-bg:       #060c21;
+  --color-surface:  #1A1A1A;
+  --color-fg:       #FFFFFF;
+  --color-muted:    #CCCCCC;
+  --color-border:   #333333;
+  --color-elevated: #000000;
+  --color-map:      #F5F5F5;
 }
 
-/* Mapear tokens a Tailwind (v4) */
+/* Modo claro (si quieres invertir el diseño normal/dark, lo ajustamos) */
+html.dark {
+  --color-bg:       #F3F4F6;
+  --color-surface:  #FFFFFF;
+  --color-fg:       #0A0A0A;
+  --color-muted:    #555555;
+  --color-border:   #E5E7EB;
+  --color-elevated: #FFFFFF;
+  --color-map:      #D1D5DB;
+}
+
+/* Mapear tokens a Tailwind v4 */
 @theme {
   --color-bg:       var(--color-bg);
   --color-surface:  var(--color-surface);
@@ -23,7 +34,7 @@
   --color-map:      var(--color-map);
 }
 
-/* Base mínima */
+/* Base */
 html, body {
   background: var(--color-bg);
   color: var(--color-fg);
@@ -34,13 +45,12 @@ html, body {
   color: var(--color-bg);
 }
 
-/* Accesibilidad de foco */
 :focus-visible {
   outline: 2px solid var(--color-fg);
   outline-offset: 2px;
 }
 
-/* Contenedor utilitario (opcional) */
+/* Contenedor */
 .container {
   @apply mx-auto max-w-7xl px-4;
 }

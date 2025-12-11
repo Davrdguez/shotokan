@@ -1,13 +1,13 @@
 ---
-/* src/pages/mas-informacion/iaido.astro
-   Página "Iaído" — Shotokan Valladolid
+/* src/pages/mas-informacion/mma-y-bjj.astro
+   Página "MMA y BJJ" — Shotokan Valladolid
    Astro + Tailwind • fondo #0A192F, texto blanco, acento rojo (red-600)
 */
 import Layout from "../../../layouts/Layout.astro";
 import "../../../styles/global.css";
 
 // Imágenes (ajusta rutas a tu /public)
-const HERO_IMG = "/iaido/hero.jpg";
+const HERO_IMG = "/mma-bjj/hero.jpg";
 
 const CONTACT = {
   address: "Paseo de Zorrilla, 117, 47008 Valladolid",
@@ -15,35 +15,35 @@ const CONTACT = {
   email: "centrodeportivoshotokan@gmail.com",
 };
 
-const pillars = [
-  { title: "Zanshin (presencia)", text: "Atención continua antes, durante y después de cada movimiento." },
-  { title: "Kokyu y postura", text: "Respiración y alineación corporal para un corte fluido y eficiente." },
-  { title: "Kata con bokken/iaitō", text: "Secuencias tradicionales: desenvainado, corte, chiburi y noto." },
-  { title: "Etiqueta (Reihō)", text: "Protocolo del dojo, cuidado del arma y seguridad." },
+const benefits = [
+  { title: "Condición completa", text: "Fuerza, resistencia, movilidad y control corporal bajo fatiga." },
+  { title: "Toma de decisiones", text: "Lectura táctica, gestión del espacio y del ritmo del combate." },
+  { title: "Seguridad y control", text: "Trabajos con compañero, control de posiciones y finalizaciones con supervisión." },
+  { title: "Confianza y respeto", text: "Entorno de equipo, respeto por el compañero y cultura del tatami." },
 ];
 
-const benefits = [
-  { title: "Concentración y calma", text: "Trabajo mental de foco, control emocional y precisión." },
-  { title: "Técnica y movilidad", text: "Coordinación entre postura, cadera y desplazamientos." },
-  { title: "Fortaleza postural", text: "Estabilidad del core, caderas y tren inferior." },
-  { title: "Cultura marcial", text: "Conexión con la tradición japonesa y su protocolo." },
+const blocks = [
+  { title: "Grappling (BJJ)", text: "Derribos, guardias, pases, escapes y posiciones dominantes (side, mount, back)." },
+  { title: "Finalizaciones", text: "Extrangulaciones y llaves comunes (RNC, armbar, triangle) con técnica y protocolo de seguridad." },
+  { title: "Acondicionamiento", text: "Trabajo funcional y específico para grappling/striking, prevención de lesiones." },
 ];
 
 const levels = [
-  { name: "Iniciación", text: "Fundamentos de seguridad y primeras katas con bokken; etiqueta del dojo.", img: "/iaido/beginner.jpg" },
-  { name: "Intermedio", text: "Refinamiento de cortes, transiciones y control del ritmo; iaitō.", img: "/iaido/intermediate.jpg" },
-  { name: "Avanzado", text: "Pulido técnico, intención y detalle postural; estudio profundo de kata.", img: "/iaido/advanced.jpg" },
+  { name: "Iniciación", text: "Fundamentos de striking y grappling, normas y protocolos; apto sin experiencia.", img: "/mma-bjj/beginners.jpg" },
+  { name: "Intermedio", text: "Encadenes, drills situacionales y sparring técnico controlado.", img: "/mma-bjj/intermediate.jpg" },
+  { name: "Avanzado", text: "Estrategia, transición entre fases (de pie/suelo) y trabajo de ritmo/tempo.", img: "/mma-bjj/advanced.jpg" },
+  { name: "Competición (opcional)", text: "Camp específico, reglamentos y preparación mental/física.", img: "/mma-bjj/competition.jpg" },
 ];
 
 const faqs = [
-  { q: "¿Necesito experiencia previa?", a: "No. Puedes comenzar desde cero. Empezamos con bokken (madera) y progresamos a iaitō inerte." },
-  { q: "¿Es un entrenamiento físico intenso?", a: "La exigencia es técnica y postural. Mejora movilidad y control, con bajo impacto." },
-  { q: "¿Qué material necesito?", a: "Inicialmente, ropa cómoda. Recomendado: bokken propio más adelante; el dojo te asesora en iaitō." },
-  { q: "¿Se realizan exámenes o grados?", a: "Sí, según planificación del dojo y normativa federativa correspondiente." },
+  { q: "¿Puedo empezar desde cero?", a: "Sí. Tenemos grupos por niveles y un onboarding técnico para aprender seguro." },
+  { q: "¿Hay contacto pleno?", a: "El contacto y el sparring son progresivos y siempre supervisados; prima la seguridad." },
+  { q: "¿Qué equipamiento necesito?", a: "Ropa deportiva; después recomendamos guantillas, espinilleras, bucal y rashguard. Para BJJ, kimono/gi o no-gi según sesión." },
+  { q: "¿Es obligatorio competir?", a: "No. La competición es opcional. Puedes entrenar por salud, técnica o rendimiento." },
 ];
 
-const title = "Iaído · Shotokan Valladolid";
-const description = "Iaído en Valladolid: kata con bokken e iaitō, etiqueta y concentración. Entrena técnica, postura y presencia en Shotokan Valladolid.";
+const title = "MMA y BJJ · Shotokan Valladolid";
+const description = "Entrena MMA y Brazilian Jiu-Jitsu en Valladolid: striking, grappling y acondicionamiento con método progresivo y seguro en Shotokan Valladolid.";
 ---
 
 <Layout title={title} description={description}>
@@ -53,13 +53,13 @@ const description = "Iaído en Valladolid: kata con bokken e iaitō, etiqueta y 
       <div class="container mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-8 items-center">
         <div>
           <p class="text-sm tracking-wider uppercase text-white/70">Más información</p>
-          <h1 class="mt-2 text-3xl md:text-5xl font-bold">Iaído</h1>
+          <h1 class="mt-2 text-3xl md:text-5xl font-bold">BJJ</h1>
           <p class="mt-4 max-w-2xl text-white/80">
-            Disciplina japonesa centrada en el <strong>arte de desenvainar</strong> (iai),
-            el corte y el retorno a la vaina con control, etiqueta y precisión.
+            Programa mixto de <strong>striking</strong> y <strong>grappling</strong> con método progresivo.
+            Técnica, acondicionamiento y seguridad para todos los niveles.
           </p>
           <div class="mt-6 flex flex-wrap gap-3">
-            <a href="/contact" class="inline-flex items-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">
+            <a href="/contacto" class="inline-flex items-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">
               Probar una clase
             </a>
             <a href="/schedule" class="inline-flex items-center rounded-xl border border-white/10 px-5 py-3 font-medium hover:bg-white/5">
@@ -69,49 +69,46 @@ const description = "Iaído en Valladolid: kata con bokken e iaitō, etiqueta y 
         </div>
         <div class="relative">
           <div class="aspect-video w-full overflow-hidden rounded-2xl border border-white/10">
-            <img src={HERO_IMG} alt="Iaído en Shotokan Valladolid" class="h-full w-full object-cover" loading="lazy" />
+            <img src={HERO_IMG} alt="Entrenamiento de MMA y BJJ en Shotokan Valladolid" class="h-full w-full object-cover" loading="lazy" />
           </div>
           <div class="pointer-events-none absolute -top-10 -right-10 h-44 w-44 rounded-full bg-red-600/20 blur-3xl"></div>
         </div>
       </div>
     </section>
 
-    <!-- PILARES -->
+    <!-- BENEFICIOS -->
     <section class="container mx-auto px-4 py-16 md:py-24 grid lg:grid-cols-3 gap-10">
       <div class="lg:col-span-1">
-        <h2 class="text-2xl md:text-3xl font-semibold">Pilares del entrenamiento</h2>
-        <p class="mt-4 text-white/80">
-          Método progresivo con foco en <em>zanshin</em>, respiración, postura y el ciclo
-          técnico de kata: desenvainado, corte, chiburi y noto.
-        </p>
+        <h2 class="text-2xl md:text-3xl font-semibold">¿Por qué BJJ?</h2>
+        <p class="mt-4 text-white/80">Desarrollo físico completo y herramientas reales para controlar el combate en pie y en el suelo, con enfoque seguro y técnico.</p>
       </div>
       <div class="lg:col-span-2 grid sm:grid-cols-2 gap-6">
-        {pillars.map((p) => (
+        {benefits.map((b) => (
           <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <h3 class="text-lg font-semibold">{p.title}</h3>
-            <p class="mt-2 text-white/80">{p.text}</p>
+            <h3 class="text-lg font-semibold">{b.title}</h3>
+            <p class="mt-2 text-white/80">{b.text}</p>
           </div>
         ))}
       </div>
     </section>
 
-    <!-- BENEFICIOS -->
+    <!-- BLOQUES DE TRABAJO -->
     <section class="border-t border-white/10">
       <div class="container mx-auto px-4 py-16 md:py-24">
         <div class="md:flex md:items-end md:justify-between">
           <div>
-            <h2 class="text-2xl md:text-3xl font-semibold">Beneficios</h2>
-            <p class="mt-2 text-white/80">Calma activa, precisión técnica y cuidado postural, con bajo impacto articular.</p>
+            <h2 class="text-2xl md:text-3xl font-semibold">Bloques de trabajo</h2>
+            <p class="mt-2 text-white/80">Progresión técnica + control. Del drill al situacional y al sparring técnico.</p>
           </div>
           <a href="/sobre-nosotros" class="mt-6 md:mt-0 inline-flex items-center gap-2 rounded-lg border border-white/10 px-4 py-2 text-sm hover:bg-white/5">
             Conoce el dojo
           </a>
         </div>
         <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {benefits.map((b) => (
+          {blocks.map((m) => (
             <div class="rounded-2xl border border-white/10 p-6 bg-white/5">
-              <h3 class="font-semibold">{b.title}</h3>
-              <p class="mt-2 text-white/80">{b.text}</p>
+              <h3 class="font-semibold">{m.title}</h3>
+              <p class="mt-2 text-white/80">{m.text}</p>
             </div>
           ))}
         </div>
@@ -122,7 +119,7 @@ const description = "Iaído en Valladolid: kata con bokken e iaitō, etiqueta y 
     <section class="border-t border-white/10">
       <div class="container mx-auto px-4 py-16 md:py-24">
         <h2 class="text-2xl md:text-3xl font-semibold">Grupos y niveles</h2>
-        <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="mt-8 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
           {levels.map((lv) => (
             <article class="rounded-2xl overflow-hidden border border-white/10 bg-white/5">
               <div class="aspect-[4/3] w-full overflow-hidden">
@@ -138,21 +135,21 @@ const description = "Iaído en Valladolid: kata con bokken e iaitō, etiqueta y 
       </div>
     </section>
 
-    <!-- EQUIPAMIENTO / SEGURIDAD -->
+    <!-- RECOMENDACIONES -->
     <section class="border-t border-white/10">
       <div class="container mx-auto px-4 py-16 md:py-24 grid lg:grid-cols-[1.2fr_1fr] gap-10">
         <div>
           <h2 class="text-2xl md:text-3xl font-semibold">Equipamiento y seguridad</h2>
           <ul class="mt-4 space-y-3 text-white/80">
-            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-red-600"></span><span>Comienza con <strong>bokken</strong> (madera). Progresión a <strong>iaitō</strong> sin filo.</span></li>
-            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-red-600"></span><span>Respeta el protocolo de manejo del arma y las indicaciones del instructor.</span></li>
-            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-red-600"></span><span>Ropa cómoda; se recomienda keikogi/obi cuando avances.</span></li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-red-600"></span><span>Rashguard o camiseta técnica y pantalón corto/kimono según sesión (no-gi/gi).</span></li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-red-600"></span><span>Mouthguard, guantillas de MMA, espinilleras y, si procede, coquilla.</span></li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-red-600"></span><span>Respeta las señales de “tap”; trabajamos con control y bajo supervisión.</span></li>
           </ul>
         </div>
         <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
           <h3 class="font-semibold">Primera clase</h3>
-          <p class="mt-2 text-white/80">Sesión de introducción a etiqueta y fundamentos. Te prestamos el bokken si lo necesitas.</p>
-          <a href="/contact" class="mt-4 inline-flex items-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">
+          <p class="mt-2 text-white/80">Prueba sin compromiso. Ven con tiempo para revisar equipamiento y objetivos.</p>
+          <a href="/contacto" class="mt-4 inline-flex items-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">
             Reservar prueba
           </a>
         </div>
@@ -182,10 +179,10 @@ const description = "Iaído en Valladolid: kata con bokken e iaitō, etiqueta y 
     <!-- CTA FINAL -->
     <section class="border-t border-white/10 relative overflow-hidden">
       <div class="container mx-auto px-4 py-16 md:py-24 text-center">
-        <h2 class="text-2xl md:text-3xl font-semibold">¿Listo para empezar?</h2>
-        <p class="mt-3 text-white/80">Primera clase de prueba gratuita. Te esperamos en el dojo.</p>
+        <h2 class="text-2xl md:text-3xl font-semibold">¿Listo para entrenar?</h2>
+        <p class="mt-3 text-white/80">Primera clase de prueba gratuita. Te esperamos.</p>
         <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a href="/contact" class="inline-flex items-center justify-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">Contactar</a>
+          <a href="/contacto" class="inline-flex items-center justify-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">Contactar</a>
           <a href="/schedule" class="inline-flex items-center justify-center rounded-xl border border-white/10 px-5 py-3 font-medium hover:bg-white/5">Ver horarios</a>
         </div>
         <div class="mt-6 text-sm text-white/70">
@@ -203,7 +200,7 @@ const description = "Iaído en Valladolid: kata con bokken e iaitō, etiqueta y 
     {JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Course",
-      "name": "Iaído - Shotokan Valladolid",
+      "name": "BJJ - Shotokan Valladolid",
       "provider": {
         "@type": "SportsActivityLocation",
         "name": "Centro Deportivo Shotokan",

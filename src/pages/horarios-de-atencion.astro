@@ -15,21 +15,50 @@ const CONTACT = {
     "https://www.google.com/maps?q=Paseo+de+Zorrilla+117+Valladolid&hl=es&z=16",
 };
 
-// Ajusta aquí tus horarios reales si cambian
+// Horario real (mañana / tarde)
 const hours = [
-  { day: "Lunes", open: "10:30", close: "22:00" },
-  { day: "Martes", open: "17:30", close: "22:00" },
-  { day: "Miércoles", open: "10:30", close: "22:00" },
-  { day: "Jueves", open: "17:30", close: "22:00" },
-  { day: "Viernes", open: "10:30", close: "22:00" },
-  { day: "Sábado", open: null, close: null },   // Cerrado
-  { day: "Domingo", open: null, close: null },  // Cerrado
+  {
+    day: "Lunes",
+    slots: [
+      { opens: "10:30", closes: "12:00" },
+      { opens: "17:30", closes: "20:30" },
+    ],
+  },
+  {
+    day: "Martes",
+    slots: [{ opens: "17:30", closes: "20:30" }],
+  },
+  {
+    day: "Miércoles",
+    slots: [
+      { opens: "10:30", closes: "12:00" },
+      { opens: "17:30", closes: "20:30" },
+    ],
+  },
+  {
+    day: "Jueves",
+    slots: [{ opens: "17:30", closes: "20:30" }],
+  },
+  {
+    day: "Viernes",
+    slots: [
+      { opens: "10:30", closes: "12:00" },
+      { opens: "17:30", closes: "21:00" },
+    ],
+  },
+  {
+    day: "Sábado",
+    slots: [], // Cerrado
+  },
+  {
+    day: "Domingo",
+    slots: [], // Cerrado
+  },
 ];
 
 const notices = [
-  // Ejemplos. Puedes vaciar el array si no hay avisos.
+  // Ejemplo:
   // { title: "Puente", text: "Cerrado el 12 de octubre (festivo).", type: "info" },
-  // { title: "Exámenes de grado", text: "Atención reducida el sábado por evento interno.", type: "warning" },
 ];
 
 const title = "Horarios de atención · Shotokan Valladolid";
@@ -45,7 +74,11 @@ const description =
         <p class="text-sm tracking-wider uppercase text-white/70">Información</p>
         <h1 class="mt-2 text-3xl md:text-5xl font-bold">Horarios de atención</h1>
         <p class="mt-4 max-w-2xl text-white/80">
-          Si es tu primera vez, puedes venir en horario de atención o <a href="/contact" class="underline decoration-white/30 hover:decoration-white">contactarnos</a> para reservar una clase de prueba.
+          Si es tu primera vez, puedes venir en horario de atención o 
+          <a href="/contacto" class="underline decoration-white/30 hover:decoration-white">
+            contactarnos
+          </a> 
+          para reservar una clase de prueba.
         </p>
       </div>
       <div class="pointer-events-none absolute -top-10 -right-10 h-44 w-44 rounded-full bg-red-600/20 blur-3xl"></div>
@@ -56,7 +89,11 @@ const description =
       <section class="border-b border-white/10 bg-white/5">
         <div class="container mx-auto px-4 py-6 space-y-3">
           {notices.map((n) => (
-            <div class={`rounded-xl border px-4 py-3 ${n.type === "warning" ? "border-red-600/50" : "border-white/10"}`}>
+            <div
+              class={`rounded-xl border px-4 py-3 ${
+                n.type === "warning" ? "border-red-600/50" : "border-white/10"
+              }`}
+            >
               <p class="font-semibold">{n.title}</p>
               <p class="text-white/80">{n.text}</p>
             </div>
@@ -69,45 +106,79 @@ const description =
     <section class="container mx-auto px-4 py-16 md:py-24 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
       <div>
         <h2 class="text-2xl md:text-3xl font-semibold">Apertura del dojo</h2>
-        <p class="mt-2 text-white/80">Atención en recepción y acceso a clases según el cuadrante del grupo.</p>
+        <p class="mt-2 text-white/80">
+          Atención en recepción y acceso a clases según el cuadrante del grupo.
+        </p>
 
         <div class="mt-6 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-          <div class="grid grid-cols-2 sm:grid-cols-3 bg-white/5 px-4 py-3 text-sm text-white/70">
+          <div class="grid grid-cols-2 bg-white/5 px-4 py-3 text-sm text-white/70">
             <span>Día</span>
-            <span class="sm:text-center">Apertura</span>
-            <span class="hidden sm:block text-right sm:text-center">Cierre</span>
+            <span class="text-right sm:text-center">Horario</span>
           </div>
           <ul>
             {hours.map((h, idx) => (
-              <li class="grid grid-cols-2 sm:grid-cols-3 items-center px-4 py-3 border-t border-white/10 data-[today=true]:bg-white/10" data-day={idx}>
+              <li
+                class="grid grid-cols-2 items-center px-4 py-3 border-t border-white/10 data-[today=true]:bg-white/10"
+                data-day={idx}
+              >
                 <span class="font-medium">{h.day}</span>
-                <span class="sm:text-center">
-                  {h.open ? `${h.open} h` : <span class="opacity-70">Cerrado</span>}
-                </span>
-                <span class="hidden sm:block sm:text-center">
-                  {h.close ? `${h.close} h` : <span class="opacity-70">—</span>}
+                <span class="text-right sm:text-center">
+                  {h.slots.length > 0 ? (
+                    <span class="flex flex-col items-end sm:items-center gap-0.5 text-sm sm:text-base">
+                      {h.slots.map((slot) => (
+                        <span>
+                          {slot.opens}–{slot.closes} h
+                        </span>
+                      ))}
+                    </span>
+                  ) : (
+                    <span class="opacity-70">Cerrado</span>
+                  )}
                 </span>
               </li>
             ))}
           </ul>
           <div class="px-4 py-3 text-xs text-white/60 border-t border-white/10">
             * El horario puede variar por festivos o eventos. Consulta nuestros
-            <a href="/blog" class="underline decoration-white/30 hover:decoration-white">avisos</a>
+            <a
+              href="/blog"
+              class="underline decoration-white/30 hover:decoration-white ml-1"
+            >
+              avisos
+            </a>
             o llámanos.
           </div>
         </div>
 
-        <div class="mt-6 text-sm text-white/80">
-          <p><strong>Dirección:</strong> {CONTACT.address}</p>
-          <p><strong>Tel.:</strong> {CONTACT.phone}</p>
-          <p><strong>Email:</strong> <a class="underline decoration-white/30 hover:decoration-white" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></p>
+        <div class="mt-6 text-sm text-white/80 space-y-1">
+          <p>
+            <strong>Dirección:</strong> {CONTACT.address}
+          </p>
+          <p>
+            <strong>Tel.:</strong> {CONTACT.phone}
+          </p>
+          <p>
+            <strong>Email:</strong>{" "}
+            <a
+              class="underline decoration-white/30 hover:decoration-white"
+              href={`mailto:${CONTACT.email}`}
+            >
+              {CONTACT.email}
+            </a>
+          </p>
         </div>
 
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="/contact" class="inline-flex items-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">
+          <a
+            href="/contacto"
+            class="inline-flex items-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50"
+          >
             Contactar
           </a>
-          <a href="/classes" class="inline-flex items-center rounded-xl border border-white/10 px-5 py-3 font-medium hover:bg-white/5">
+          <a
+            href="/actividades"
+            class="inline-flex items-center rounded-xl border border-white/10 px-5 py-3 font-medium hover:bg-white/5"
+          >
             Ver actividades
           </a>
         </div>
@@ -119,23 +190,40 @@ const description =
         <p class="mt-2 text-white/80">P.º de Zorrilla, 117 — 47008 Valladolid</p>
 
         <div class="mt-6 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-          <iframe
-            title="Mapa Centro Deportivo Shotokan"
-            class="h-full w-full"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyD-PLACEHOLDER-KEY&q=${encodeURIComponent(CONTACT.address)}`}
-          ></iframe>
-        </div>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3265.731586235652!2d-4.745164988226936!3d41.62848038088588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd476d241ca0173d%3A0xb38f542fc28e169e!2sShotokan%20Valladolid!5e1!3m2!1ses!2ses!4v1757238674473!5m2!1ses!2ses"
+    width="100%"
+    height="100%"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    class="h-full w-full"
+  ></iframe>
+</div>
 
-        <a href={CONTACT.mapUrl} target="_blank" rel="noopener" class="mt-3 inline-flex items-center underline decoration-white/30 hover:decoration-white">
+
+        <a
+          href={CONTACT.mapUrl}
+          target="_blank"
+          rel="noopener"
+          class="mt-3 inline-flex items-center underline decoration-white/30 hover:decoration-white"
+        >
           Abrir en Google Maps
         </a>
 
         <div class="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
           <h3 class="font-semibold">¿Vienes a probar?</h3>
-          <p class="mt-2 text-white/80">Recomendamos llegar 10 minutos antes para explicarte la dinámica del grupo.</p>
-          <a href="/schedule" class="mt-4 inline-flex items-center rounded-xl border border-white/10 px-5 py-3 font-medium hover:bg-white/5">Ver cuadrante</a>
+          <p class="mt-2 text-white/80">
+            Recomendamos llegar 10 minutos antes para explicarte la dinámica del
+            grupo.
+          </p>
+          <a
+            href="/schedule"
+            class="mt-4 inline-flex items-center rounded-xl border border-white/10 px-5 py-3 font-medium hover:bg-white/5"
+          >
+            Ver cuadrante
+          </a>
         </div>
       </aside>
     </section>
@@ -143,11 +231,25 @@ const description =
     <!-- CTA FINAL -->
     <section class="border-t border-white/10 relative overflow-hidden">
       <div class="container mx-auto px-4 py-16 md:py-24 text-center">
-        <h2 class="text-2xl md:text-3xl font-semibold">¿Tienes dudas sobre el horario?</h2>
-        <p class="mt-3 text-white/80">Escríbenos por correo o llámanos; estaremos encantados de ayudarte.</p>
+        <h2 class="text-2xl md:text-3xl font-semibold">
+          ¿Tienes dudas sobre el horario?
+        </h2>
+        <p class="mt-3 text-white/80">
+          Escríbenos por correo o llámanos; estaremos encantados de ayudarte.
+        </p>
         <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a href="/contact" class="inline-flex items-center justify-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50">Contacto</a>
-          <a href={`mailto:${CONTACT.email}`} class="inline-flex items-center justify-center rounded-xl border border-white/10 px-5 py-3 font-medium hover:bg-white/5">{CONTACT.email}</a>
+          <a
+            href="/contacto"
+            class="inline-flex items-center justify-center rounded-xl bg-red-600 px-5 py-3 font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600/50"
+          >
+            Contacto
+          </a>
+          <a
+            href={`mailto:${CONTACT.email}`}
+            class="inline-flex items-center justify-center rounded-xl border border-white/10 px-5 py-3 font-medium hover:bg-white/5"
+          >
+            {CONTACT.email}
+          </a>
         </div>
       </div>
       <div class="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-red-600/20 blur-3xl"></div>
@@ -163,15 +265,34 @@ const description =
       "address": CONTACT.address,
       "telephone": CONTACT.phone,
       "email": CONTACT.email,
-      "openingHoursSpecification": hours.map((h, i) => {
-        // schema.org usa English dayOfWeek: Monday..Sunday
-        const map = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
-        return {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": map[i],
-          ...(h.open && h.close ? { "opens": h.open, "closes": h.close } : { "opens": "00:00", "closes": "00:00" })
+      "openingHoursSpecification": hours.flatMap((h, i) => {
+        const map = [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ];
+        if (!h.slots.length) {
+          // Día cerrado: 00:00–00:00 (Google lo interpreta como cerrado)
+          return [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: map[i],
+              opens: "00:00",
+              closes: "00:00",
+            },
+          ];
         }
-      })
+        return h.slots.map((slot) => ({
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: map[i],
+          opens: slot.opens,
+          closes: slot.closes,
+        }));
+      }),
     })}
   </script>
 
@@ -184,7 +305,7 @@ const description =
         let idx = now.getDay(); // 0..6 (domingo..sábado)
         idx = idx === 0 ? 6 : idx - 1; // L=0, M=1, ... D=6
         const items = document.querySelectorAll("[data-day]");
-        items.forEach((el) => el.dataset.today = "false");
+        items.forEach((el) => (el.dataset.today = "false"));
         const today = document.querySelector(`[data-day="${idx}"]`);
         if (today) today.dataset.today = "true";
       } catch (e) {}
